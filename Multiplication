@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int r1, c1, r2, c2;
+
+    cout << "Enter rows and columns for first matrix (A): ";
+    cin >> r1 >> c1;
+    cout << "Enter rows and columns for second matrix (B): ";
+    cin >> r2 >> c2;
+
+    
+    if (c1 != r2) {
+        cout << "Matrix multiplication not possible.\n";
+        return 1;
+    }
+
+    int A[10][10], B[10][10], product[10][10];
+
+    cout << "Enter elements of first matrix (A):\n";
+    for (int i= 0;i<r1;i++)
+        for (int j= 0;j<c1;j++)
+            cin >> A[i][j];
+
+    cout << "Enter elements of second matrix (B):\n";
+    for (int i = 0;i <r2;i++)
+        for (int j = 0;j<c2;j++)
+            cin >> B[i][j];
+
+    
+    for (int i = 0; i < r1; i++)
+        for (int j = 0; j < c2; j++)
+            product[i][j] = 0;
+
+    for (int i = 0; i < r1; i++) {
+        for (int j= 0; j< c2;j++) {
+            for (int k = 0 ;k<c1;k++) {
+                product[i][j]+=A[i][k]*B[k][j];
+            }
+        }
+    }
+
+    cout << "Multiplication:\n";
+    for (int i = 0; i < r1; i++) {
+        for (int j = 0; j < c2; j++)
+            cout<<product[i][j]<<" ";
+        cout<<endl;
+    }
+
+    return 0;
+}
+
+//output
+Enter rows and columns for first matrix (A): 2 3
+Enter rows and columns for second matrix (B): 3 2
+Enter elements of first matrix (A):
+1 2 3
+3 5 7
+Enter elements of second matrix (B):
+2 6
+5 6
+8 9
+Multiplication:
+36 45 
+87 111 
+
